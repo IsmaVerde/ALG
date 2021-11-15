@@ -1,0 +1,54 @@
+INFORME PRÁCTICA 1 DE ALGORITMOS
+Sergio Piñeiro (sergio.pineiro) e Ismael Verde (ismael.verdec)
+Grupo 2.1
+
+La primera práctica consiste en implementar en C dos algoritmos,comprobar
+que funcionan correctamente y medir sus tiempos. Ambos reciben un vector
+y su longitud. Con esto, el algoritmo busca la suma máxima de los valores
+del vector, pudiendo sumar solamente los numeros consecutivos. Si la suma
+no es positiva, el resultado es 0.
+
+Ambos logaritmos compilan y funcionan sin problema, dando los resultados
+esperados según los test.
+
+En esta práctica los tiempos fueron medidos en un portatil Msi gv62 7re,
+con un procesador de 64 bits i7-7700HQ, trabando a 2.80 GHz con una RAM
+de 16 GB.
+
+Los tiempos de los logaritmos, medidos en microsegundos, fueron los siguientes:
+(n = tamaño del vector , t = tiempo de ejecución, cti = cota inferior, 
+cta = cota ajustada, cts = cota superior)
+
+Medición del algoritmo sumaSubMax1:
+
+     n         t            cti(t/n^1.8)     cta(t/n^2)      cts(t/n^2.2)
+    500      276.793*        0.003837         0.001107         0.000319
+   1000      1058.000        0.004212         0.001058         0.000266
+   2000      4159.000        0.004755         0.001040         0.000227
+   4000     18281.000        0.006002         0.001143         0.000218
+   8000     68046.000        0.006416         0.001063         0.000176
+  16000    269459.000        0.007296         0.001053         0.000152
+  32000   1072842.000        0.008342         0.001048         0.000132
+	        			     C = 0.0011
+
+Medición del algoritmo sumaSubMax2:
+
+     n         	t            cti(t/n^0.8)      cta(t/n)       cts(t/n^1.2)
+    500         1.827*        0.012661         0.003653         0.001054
+   1000         2.963*        0.011797         0.002963         0.000744
+   2000         8.633*        0.019740         0.004317         0.000944
+   4000        12.763*        0.016762         0.003191         0.000607
+   8000        21.943*        0.016551         0.002743         0.000455
+  16000        43.600*        0.018888         0.002725         0.000393
+  32000        81.760*        0.020343         0.002555         0.000321
+	                                      C = 0.0031
+
+(Los tiempos marcados con un asterisco*, son aquellos inferiores a 500.
+Estos fueron calculados hallando el tiempo medio en 300 iteraciones (K) de dicho algoritmo.)
+
+No observamos medidas anómalas.
+
+En conclusión, se puede afirmar que el algoritmo sumaSubMax2 es más efectivo,
+debido a que completa la misma tarea en un tiempo muy inferior. La principal
+causa de esta diferencia de tiempo, se debe a que en el algoritmo sumaSubMax1
+hay dos bucles for, mientras que en sumaSubMax2 solo hay uno.

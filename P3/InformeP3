@@ -1,0 +1,113 @@
+INFORME PRÁCTICA 3 DE ALGORITMOS
+Sergio Piñeiro (sergio.pineiro) e Ismael Verde (ismael.verdec)
+Grupo 2.1
+
+La práctica consiste en implementar en C un montículo de mínimos con
+algunas de sus operaciones, además de implementar la ordenación por
+montículos. Dichas implementaciones deben ser validadas por un test.
+Posteriormente, se tendrá que demostrar que crear un monticulo a partir
+de un vector de n elementos se ejecuta en un tiempo de O(n). Por último,
+habrá que calcular las complejidades de la ordenacion, bajo diferentes
+inicializaciones, midiendo sus tiempos.
+
+Las operaciones implementadas compilan y funcionan sin problema, dando
+los resultados esperados según el test.
+
+En esta práctica los tiempos fueron medidos en un portatil Msi gv62 7re,
+con un procesador de 64 bits i7-7700HQ, trabando a 2.80 GHz con una RAM
+de 16 GB.
+
+Los tiempos del algoritmo de ordenacion y de creación, medidos en
+microsegundos, fueron los siguientes:
+
+(n = tamaño del vector , t = tiempo de ejecución, cti = cota inferior, 
+cta = cota ajustada, cts = cota superior)
+
+Medición de creación:
+
+				cti		  cta		  cts
+     n          t(n)           n^0.80              n             n^1.20
+    500         9.646*        0.066861         0.019292         0.005567
+   1000        19.058*        0.075871         0.019058         0.004787
+   2000        36.179*        0.082724         0.018090         0.003956
+   4000        73.062*        0.095950         0.018266         0.003477
+   8000       140.291*        0.105818         0.017536         0.002906
+  16000       278.075*        0.120466         0.017380         0.002507
+  32000       583.000        0.145060         0.018219         0.002288   #
+  64000      1100.000        0.157199         0.017188         0.001879
+ 128000      2211.000        0.181477         0.017273         0.001644
+ 256000      4815.000        0.226989         0.018809         0.001559   #
+					       C=0.017
+
+Los tiempos marcados con un # están por encima de lo esperado.
+
+
+Medición de ordenación con inicialización ascendente:
+
+				cti		cta		  cts
+     n         t(n)              n             n*log(n)          n^1.4
+    500        37.802*        0.075604         0.012166         0.004613  #
+   1000        89.169*        0.089169         0.012909         0.003983
+   2000       196.403*        0.098201         0.012920         0.003211
+   4000       417.919*        0.104480         0.012597         0.002501
+   8000       923.000        0.115375         0.012838         0.002022
+  16000      1847.000        0.115437         0.011925         0.001481
+  32000      3929.000        0.122781         0.011836         0.001153
+  64000      8473.000        0.132391         0.011963         0.000910
+ 128000     18335.000        0.143242         0.012181         0.000721
+ 256000     37701.000        0.147270         0.011826         0.000543
+					      C=0.0118
+
+El tiempo marcado con un # está ligeramente por debajo de lo esperado.
+
+
+Medición de ordenación con inicialización descendente:
+
+				cti		cta		  cts
+     n         t(n)              n              n*log(n)          n^1.4
+    500        40.330*        0.080660         0.012979         0.004922  #
+   1000        93.793*        0.093793         0.013578         0.004190
+   2000       205.371*        0.102685         0.013510         0.003358
+   4000       429.713*        0.107428         0.012952         0.002572
+   8000       917.000        0.114625         0.012754         0.002009
+  16000      1911.000        0.119438         0.012338         0.001532
+  32000      3986.000        0.124563         0.012008         0.001170
+  64000      9187.000        0.143547         0.012971         0.000987
+ 128000     18506.000        0.144578         0.012294         0.000728
+ 256000     37237.000        0.145457         0.011681         0.000536
+					      C=0.011
+
+El tiempo # se encuentra por debajo de lo esperado.
+
+
+Medición de ordenación con inicialización aleatoria:
+
+ 			         cti		cta		   cts
+     n         t(n)              n             n*log(n)           n^1.4
+    500        53.700*        0.107400         0.017282         0.006553
+   1000       116.271*        0.116271         0.016832         0.005194
+   2000       247.408*        0.123704         0.016275         0.004045
+   4000       540.000        0.135000         0.016277         0.003232
+   8000      1120.000        0.140000         0.015578         0.002453	  #1
+  16000      2501.000        0.156312         0.016147         0.002005
+  32000      5319.000        0.166219         0.016023         0.001561
+  64000     12163.000        0.190047         0.017173         0.001306
+ 128000     25157.000        0.196539         0.016713         0.000989
+ 256000     53555.000        0.209199         0.016799         0.000771
+					      C=0.0167
+
+El tiempo #1 está por debajo de lo esperado.
+
+
+(los tiempos marcados con un asterisco*, son aquellos inferiores a 500.
+Estos fueron calculados por número medio de iteraciones, siendo este 
+de k=1000.)
+
+Medidas anómalas indicadas con un #, con especificación de la anomalía
+bajo cada medida de tiempo.
+
+En conclusión, la creación de un montículo de a partir de un vector
+de n elementos se ejecuta con un tiempo de O(n). Por otra parte, la
+ordenación por montículos, a pesar de las diferentes inicializaciones
+del vector, tiene tiempos muy similares en la ascendente y descendente.
+La aleatoria es la que más tiempo lleva.

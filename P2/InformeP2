@@ -1,0 +1,105 @@
+INFORME PRÁCTICA 2 DE ALGORITMOS
+Sergio Piñeiro (sergio.pineiro) e Ismael Verde (ismael.verdec)
+Grupo 2.1
+
+La práctica consiste en implementar en C dos algoritmos de ordenación,
+comprobar que funcionan correctamente y medir sus tiempos según tres 
+diferentes inicializaciones. Estas son inicialización ascendente, descendente
+y aleatoria. Los dos reciben un vector y su longitud como parámetros.
+
+Ambos logaritmos compilan y funcionan sin problema, dando los resultados
+esperados según los test.
+
+En esta práctica los tiempos fueron medidos en un portatil Msi gv62 7re,
+con un procesador de 64 bits i7-7700HQ, trabando a 2.80 GHz con una RAM
+de 16 GB.
+
+Los tiempos de los logaritmos, medidos en microsegundos, fueron los siguientes:
+(n = tamaño del vector , t = tiempo de ejecución, cti = cota inferior, 
+cta = cota ajustada, cts = cota superior)
+(los tiempos marcados con un asterisco*, son aquellos inferiores a 500.
+Estos fueron calculados por número medio de iteraciones, siendo este de
+100 iteraciones.)
+
+
+Medición del algoritmo de inserción con inicialización ascendente:
+     n         t(n)        cti(t(n)/n^0.80)) cta(t(n)/n^1.00)  cts(t(n)/n^1.20)
+    500         1.680*        0.011645         0.003360         0.000969
+   1000         3.360*        0.013376         0.003360         0.000844
+   2000         6.710*        0.015343         0.003355         0.000734
+   4000        14.090*        0.018504         0.003523         0.000671
+   8000        25.550*        0.019272         0.003194         0.000529
+  16000        50.450*        0.021856         0.003153         0.000455
+  32000       105.880*        0.026345         0.003309         0.000416
+                                              C=0.00315
+
+Anomalías: Se obvservan anomalias en el tiempo del medio y en el último.
+
+Medición del algoritmo de inserción con inicialización descendente:
+     n         t(n)      cti(t(n)/n^1.80)  cta(t(n)/n^2.00)  cts(t(n)/n^2.20)
+    500       304.530*       0.004222         0.001218         0.000351
+   1000      1272.000        0.005064         0.001272         0.000320
+   2000      4761.000        0.005443         0.001190         0.000260
+   4000     19184.000        0.006298         0.001199         0.000228
+   8000     76072.000        0.007172         0.001189         0.000197
+  16000    299784.000        0.008117         0.001171         0.000169
+  32000   1189076.000        0.009246         0.001161         0.000146
+                                             C=0.00115
+
+Anomalías: El primer valor de la cota ajustada es inferior al segundo.
+
+Medición del algoritmo de inserción con inicialización aleatoria:
+     n         t(n)      cti(t(n)/n^1.80)  cta(t(n)/n^2.00)  cts(t(n)/n^2.20)
+    500       159.520*       0.002211         0.000638         0.000184
+   1000       656.000        0.002612         0.000656         0.000165
+   2000      2563.000        0.002930         0.000641         0.000140
+   4000      9472.000        0.003110         0.000592         0.000113
+   8000     38000.000        0.003583         0.000594         0.000098
+  16000    150127.000        0.004065         0.000586         0.000085
+  32000    597131.000        0.004643         0.000583         0.000073
+                                             C=0.00058
+
+Anomalías: Los valores de la cota ajustada se encuentran un poco dispersos pero más o menos se adecuan a un valor constante.
+
+Medición del algoritmo de shell con inicialización ascendente:
+     n         t(n)       cti(t(n)/n^1.0)  cta(t(n)/n*log2(n)) cts(t(n)/n^1.2)
+    500        16.430*        0.032860         0.005696         0.009481
+   1000        37.080*        0.037080         0.005555         0.009314
+   2000        83.550*        0.041775         0.005607         0.009135
+   4000       183.170*        0.045792         0.005438         0.008717
+   8000       376.050*        0.047006         0.005489         0.007790
+  16000       820.000         0.051250         0.005230         0.007394
+  32000      1720.000         0.053750         0.005260         0.006751
+                                              C=0.0052
+Anomalías: Algunos valores sufren ligeras anomalías.
+
+Medición del algoritmo de shell con inicialización descendente:
+     n          t(n)      cti(t(n)/n^0.97) cta(t(n)/n^1.17) cts(t(n)/n^1.37)
+    500        23.390*        0.056368         0.016778         0.004693
+   1000        52.490*        0.064577         0.016791         0.004075
+   2000       113.630*        0.071366         0.016210         0.003413
+   4000       246.670*        0.079089         0.015693         0.002866
+   8000       551.000         0.090189         0.015633         0.002477
+  16000      1220.000         0.101944         0.015437         0.002122
+  32000      2801.000         0.119486         0.015806         0.001885
+                                              C=0.0159
+
+Anomalías: El primer valor y el último sufren una pequeña anomalía.
+
+Medición del algoritmo de shell con inicialización aleatoria:
+     n         t(n)       cti(t(n)/n^1.00) cta(t(n)/n^1.195) cts(t(n)/n^1.40)
+    500        55.330*       0.108120        0.032182         0.009213
+   1000       125.230*       0.125730        0.032697         0.007901
+   2000       269.570*       0.137310        0.031189         0.006445
+   4000       640.000        0.152250        0.030210         0.005798
+   8000      1377.000        0.172125        0.029814         0.004727
+  16000      3486.000        0.197875        0.029234         0.004535
+  32000      7285.000        0.227656        0.029472         0.003591
+                                       	     C=0.029
+
+Anomalías: Los valores de la cota ajustada contienen pequeñas anomalías.
+
+
+En conclusión, se puede afirmar que en general el algoritmo de ordenación por shell
+es más eficaz, a excepción de cuando el vector ya está ordenado, donde el
+algoritmo de ordenación por inserción es más rápido.
