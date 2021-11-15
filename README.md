@@ -1,2 +1,2 @@
 # ALG
-Prácticas de Algoritmos
+Prácticas de Algoritmos en donde se prueba la eficiencia de distintos algoritmos.
